@@ -1,0 +1,18 @@
+services:
+    simseo_forum.admin.category:
+        class: Simseo\ForumBundle\Admin\CategoryAdmin
+        arguments: 
+            - ~
+            - Simseo\ForumBundle\Entity\Category
+            - 'PixSortableBehaviorBundle:SortableAdmin'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Forum, label: Category, icon:<i class='fa fa-comments-o'></i> }
+
+    simseo_forum.admin.forum:
+        class: Simseo\ForumBundle\Admin\ForumAdmin
+        arguments: 
+            - ~
+            - Simseo\ForumBundle\Entity\Forum
+            - 'PixSortableBehaviorBundle:SortableAdmin'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Forum, label: Forum }
