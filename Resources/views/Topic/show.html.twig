@@ -11,8 +11,10 @@
         {% include 'SimseoForumBundle:Post:single-post.html.twig' %}
     {% endfor %}
     {{ knp_pagination_render(pagination) }}
-    <div id="form">
-        {{ form(form) }}
-    </div>
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <div id="form">
+            {{ form(form) }}
+        </div>
+    {% endif %}
 {% endblock %}
 

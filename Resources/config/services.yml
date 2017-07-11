@@ -18,9 +18,16 @@ services:
             - { name: sonata.admin, manager_type: orm, group: Forum, label: Forum }
             
     simseo.forum.pagin:
-            class: Simseo\ForumBundle\Component\Pagin
-            arguments:
-                - '@request_stack'
-                - '@knp_paginator'
-                - '%simseo_forum.pagination%'
-                - '%simseo_forum.pagination.pagename%'
+        class: Simseo\ForumBundle\Component\Pagin
+        arguments:
+            - '@request_stack'
+            - '@knp_paginator'
+            - '%simseo_forum.pagination%'
+            - '%simseo_forum.pagination.pagename%'
+                
+    simseo.forum.antiflood:
+        class: Simseo\ForumBundle\Component\Antiflood
+        arguments:
+            - '@security.token_storage'
+            - '%simseo_forum.antiflood%'
+            - '%simseo_forum.antiflood.hours%'

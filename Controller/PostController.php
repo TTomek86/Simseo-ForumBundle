@@ -5,8 +5,6 @@ namespace Simseo\ForumBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
-use Simseo\ForumBundle\Entity\Post;
-use Simseo\ForumBundle\Form\Type\PostType;
 use Simseo\ForumBundle\Form\Type\PostEditType;
 use Simseo\ForumBundle\Form\Handler\PostHandler;
 
@@ -37,12 +35,14 @@ class PostController extends Controller
         );
     }
     /**
+     * 
      * @Security("is_granted('ROLE_MODERATOR')")
      */
     public function removeAction(\Simseo\ForumBundle\Entity\Post $post)
     {
         $em = $this->getDoctrine()->getManager();
-        $em->remove($post);
+        $post->setContent('ce message a été supprimé par un modérateur à cause de son contenu non conforme aux règles du forum');
+        $em->persist($post);
         $em->flush();
         
         $this->get('session')->getFlashBag()->add('success', 'Le post à bien été supprimé');

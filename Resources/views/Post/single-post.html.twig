@@ -1,6 +1,8 @@
 <div class="row" id="{{ post.id }}">  
     <div class="col-sm-2 text-center">
+        {% if post.author is not null %}
         {{ post.author.username }}
+        {% endif %}
     </div>
     <div class="col-sm-10">
         <div class="col-sm-12 text-right small">

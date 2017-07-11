@@ -3,14 +3,20 @@
     <li class="list-unstyled"><i class="glyphicon glyphicon-exclamation-sign"></i>report</li>
     <li class="list-unstyled"><i class="glyphicon glyphicon-thumbs-up"></i></li>
     <li class="list-unstyled"><i class="glyphicon glyphicon-thumbs-down"></i></li>
+    
+    {% if is_granted('ROLE_MODERATOR') or post.author == app.user %}
     <li class="list-unstyled">
         <a href="{{ path('simseo_forum_post_edit', { 'id' : post.id }) }}">
             <i class="glyphicon glyphicon-edit"></i>editer
         </a>
     </li>
+    {% endif %}
+    
+    {% if is_granted('ROLE_MODERATOR') %}
     <li class="list-unstyled">
         <a href="{{ path('simseo_forum_post_remove', { 'id' : post.id }) }}">
             <i class="glyphicon glyphicon-remove"></i>supprimer
         </a>
     </li>
+    {% endif %}
 </ul>
