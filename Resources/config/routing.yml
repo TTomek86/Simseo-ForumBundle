@@ -22,6 +22,26 @@ simseo_forum_topic_edit:
     path:     /topic/edit/{slug}
     defaults: { _controller: SimseoForumBundle:Topic:edit }
     
+simseo_forum_topic_lock:
+    path:     /topic/lock/{id}
+    defaults: { _controller: SimseoForumBundle:Topic:lockToggle }
+    
+simseo_forum_topic_pinn:
+    path:     /topic/pinn/{id}
+    defaults: { _controller: SimseoForumBundle:Topic:pinnToggle }
+    
+simseo_forum_topic_resolve:
+    path:     /topic/resolve/{id}
+    defaults: { _controller: SimseoForumBundle:Topic:resolveToggle }
+    
+simseo_forum_post_rate_up:
+    path:     /post/rateup/{id}
+    defaults: { _controller: SimseoForumBundle:Post:rateUp }
+    
+simseo_forum_post_rate_down:
+    path:     /post/ratedown/{id}
+    defaults: { _controller: SimseoForumBundle:Post:rateDown }
+    
 simseo_forum_post_edit:
     path:     /post/edit/{id}
     defaults: { _controller: SimseoForumBundle:Post:edit }

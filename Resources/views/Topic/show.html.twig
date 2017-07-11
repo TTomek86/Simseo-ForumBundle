@@ -1,20 +1,25 @@
 {% extends "SimseoForumBundle::layout.html.twig" %}
 {% block forum_body %}
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% include 'SimseoForumBundle:Topic:topic-infos.html.twig' %}
         <a href="#form">
             <button type="button" class="btn pull-right">Répondre</button>
         </a>
     {% endif %}
     <h3>{{ topic.title }}</h3>
+    {% include 'SimseoForumBundle:Nav:topic-options.html.twig' %}
     {{ knp_pagination_render(pagination) }}
     {% for post in pagination %}
         {% include 'SimseoForumBundle:Post:single-post.html.twig' %}
     {% endfor %}
     {{ knp_pagination_render(pagination) }}
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% include 'SimseoForumBundle:Topic:topic-infos.html.twig' %}
+        {% if topic.locked == false %}
         <div id="form">
             {{ form(form) }}
         </div>
+        {% endif %}
     {% endif %}
 {% endblock %}
 

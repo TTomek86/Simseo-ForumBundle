@@ -63,6 +63,14 @@ class Post
      * @ORM\Column(name="content", type="string", length=10000)
      */
     private $content;
+    
+    /**
+     *
+     * @var int
+     * 
+     * @ORM\Column(name="rating", type="integer")
+     */
+    private $rating = 0;
 
 
     /**
@@ -173,6 +181,43 @@ class Post
     public function getContent()
     {
         return $this->content;
+    }
+    
+    /**
+     * Set rating
+     * 
+     * @param int $rating
+     * @return Post
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+        return $this;
+    }
+    
+    /**
+     * Get rating
+     * 
+     * @return string
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+    /**
+     * Increase rating
+     */
+    public function increaseRating()
+    {
+        $this->rating ++;
+    }
+    
+    /**
+     * Decrease rating
+     */
+    public function decreaseRating()
+    {
+        $this->rating --;
     }
     
     /**

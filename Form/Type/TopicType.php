@@ -5,7 +5,7 @@ namespace Simseo\ForumBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class TopicType extends AbstractType
@@ -16,7 +16,7 @@ class TopicType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title')
-                ->add('content', TextareaType::class, 
+                ->add('content', CKEditorType::class, 
                     array(
                         'label' => 'contenu',
                         'mapped' => false

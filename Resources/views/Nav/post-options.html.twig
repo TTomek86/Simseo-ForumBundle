@@ -1,9 +1,22 @@
 <ul class="list-inline small">
     <li class="list-unstyled"><i class="glyphicon glyphicon-share-alt"></i>citer</li>
     <li class="list-unstyled"><i class="glyphicon glyphicon-exclamation-sign"></i>report</li>
-    <li class="list-unstyled"><i class="glyphicon glyphicon-thumbs-up"></i></li>
-    <li class="list-unstyled"><i class="glyphicon glyphicon-thumbs-down"></i></li>
-    
+    <li class="list-unstyled">
+        <a href="{{ path('simseo_forum_post_rate_up', { 'id' : post.id }) }}">
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+        </a>
+    </li>
+    <li class="list-unstyled">
+        <a href="{{ path('simseo_forum_post_rate_down', { 'id' : post.id }) }}"> 
+            <i class="glyphicon glyphicon-thumbs-down"></i>
+        </a>
+    </li>
+     <li class="list-unstyled">
+         {% if post.rating > 0 %}<span class="label label-success">{{ post.rating }}</span>{% endif %}
+         {% if post.rating < 0 %}<span class="label label-danger">{{ post.rating }}</span>{% endif %}
+         {% if post.rating == 0 %}<span class="label label-info">{{ post.rating }}</span>{% endif %}
+        
+    </li>
     {% if is_granted('ROLE_MODERATOR') or post.author == app.user %}
     <li class="list-unstyled">
         <a href="{{ path('simseo_forum_post_edit', { 'id' : post.id }) }}">

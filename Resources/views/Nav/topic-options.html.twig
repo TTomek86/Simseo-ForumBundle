@@ -1,0 +1,31 @@
+{% if is_granted('ROLE_MODERATOR') %}
+    <a href="{{ path('simseo_forum_topic_lock', { 'id' : topic.id }) }}">
+        <button class="btn btn-danger">
+        {% if topic.locked %}
+            Ouvrir
+        {% else %}
+            Fermer
+        {% endif %}
+        </button>
+    </a>
+    <a href="{{ path('simseo_forum_topic_pinn', { 'id' : topic.id }) }}">
+        <button class="btn btn-warning">
+            {% if topic.pinned %}
+                Désépingler
+            {% else %}
+                Epingler
+            {% endif %}
+        </button>
+    </a>
+{% endif %}
+{% if is_granted('ROLE_MODERATOR') or topic.author == app.user %}
+    <a href="{{ path('simseo_forum_topic_resolve', { 'id' : topic.id }) }}">
+        <button class="btn btn-success">
+            {% if topic.resolved %}
+                Marquer comme non résolu
+            {% else %}
+                Marquer comme résolu
+            {% endif %}
+        </button>
+    </a>
+{% endif %}

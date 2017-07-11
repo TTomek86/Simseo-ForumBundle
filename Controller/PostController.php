@@ -48,4 +48,22 @@ class PostController extends Controller
         $this->get('session')->getFlashBag()->add('success', 'Le post à bien été supprimé');
         return $this->redirectToRoute('simseo_forum_topic_show', array('slug' => $post->getTopic()->getSlug()));
     }
+    
+    public function rateUpAction(\Simseo\ForumBundle\Entity\Post $post)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $post->increaseRating();
+        $em->persist($post);
+        $em->flush();
+        return $this->redirectToRoute('simseo_forum_topic_show', array('slug' => $post->getTopic()->getSlug()));
+    }
+    
+    public function rateDownAction(\Simseo\ForumBundle\Entity\Post $post)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $post->decreaseRating();
+        $em->persist($post);
+        $em->flush();
+        return $this->redirectToRoute('simseo_forum_topic_show', array('slug' => $post->getTopic()->getSlug()));
+    }
 }

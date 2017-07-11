@@ -65,7 +65,7 @@ class Forum
     
     /**
      * @ORM\OneToMany(targetEntity="Simseo\ForumBundle\Entity\Topic", mappedBy="forum", cascade={"remove"})
-     * @ORM\OrderBy({"lastPost" = "DESC"})
+     * @ORM\OrderBy({"pinned" = "DESC", "lastPost" = "DESC"})
      */
     private $topics;
 

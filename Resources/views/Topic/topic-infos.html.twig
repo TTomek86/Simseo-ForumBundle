@@ -1,0 +1,15 @@
+{% if topic.locked %}
+    <div class="alert alert-danger">
+        Ce topic a été fermé, vous ne pouvez plus poster de nouvelles réponses
+    </div>
+{% endif %}
+{% if topic.resolved %}
+    <div class="alert alert-info">
+        Ce topic est résolu. Vous pouvez poster de nouvelles réponses mais son créateur a déjà indiqué qu'il avait trouvé la solution à son problème.
+    </div>
+{% endif %}
+{% if date(topic.lastPost) < date('-2month') %}
+    <div class="alert alert-warning">
+        Attention, ce sujet est ancien. Le déterrer n'est pas forcément approprié. Il est peut être plus adapté de créer un nouveau sujet.
+    </div>
+{% endif %}

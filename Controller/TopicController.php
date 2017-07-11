@@ -78,7 +78,7 @@ class TopicController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($topic);
         $em->flush();
-        $this->get('session')->getFlashBag->add('success', 'le topic a bien été supprimé');
+        $this->get('session')->getFlashBag()->add('success', 'le topic a bien été supprimé');
         return $this->redirectToRoute('simseo_forum_show', array('slug' => $topic->getForum()->getSlug()));
     }
     
@@ -92,11 +92,11 @@ class TopicController extends Controller
         if($topic->isLocked())
         {
             $topic->setLocked(false);
-            $this->get('session')->getFlashBag->add('success', 'le topic a bien été réouvert');
+            $this->get('session')->getFlashBag()->add('success', 'le topic a bien été réouvert');
         }
         else{
             $topic->setLocked(true);
-            $this->get('session')->getFlashBag->add('success', 'le topic a bien été fermé');
+            $this->get('session')->getFlashBag()->add('success', 'le topic a bien été fermé');
         }
         $em->persist($topic);
         $em->flush();
@@ -115,11 +115,11 @@ class TopicController extends Controller
         $em = $this->getDoctrine()->getManager();
         if($topic->isResolved()){
             $topic->setResolved(false);
-            $this->get('session')->getFlashBag->add('success', 'le topic a été marqué comme non résolu');
+            $this->get('session')->getFlashBag()->add('success', 'le topic a été marqué comme non résolu');
         }
         else{
             $topic->setResolved(true);
-            $this->get('session')->getFlashBag->add('success', 'le topic a été marqué comme résolu');
+            $this->get('session')->getFlashBag()->add('success', 'le topic a été marqué comme résolu');
         }
         $em->persist($topic);
         $em->flush();
@@ -134,11 +134,11 @@ class TopicController extends Controller
         $em = $this->getDoctrine()->getManager();
         if($topic->isPinned()){
             $topic->setPinned(false);
-            $this->get('session')->getFlashBag->add('success', 'le topic a été desépinglé');
+            $this->get('session')->getFlashBag()->add('success', 'le topic a été desépinglé');
         }
         else{
             $topic->setPinned(true);
-            $this->get('session')->getFlashBag->add('success', 'le topic a été épinglé');
+            $this->get('session')->getFlashBag()->add('success', 'le topic a été épinglé');
         }
         $em->persist($topic);
         $em->flush();
