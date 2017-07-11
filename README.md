@@ -10,8 +10,9 @@ Ce bundle a besoin d'utiliser knplabs/knp-paginator-bundle, stof/doctrine-extens
 
 Utilisez composer pour gérer les dépendances et télécharger SimseoForumBundle
 
+```bash
     $php composer.phar require simseo/forum-bundle
-
+```
 
 Enregistrez le bundle dans app/AppKernel.php
 ```php
@@ -39,6 +40,7 @@ Ajoutez les routes:
 ```
 Ajoutez la configuration suivante dans app/config/config.yml
 
+```yaml
     # app/config/config.yml
     
     simseo_forum:
@@ -57,9 +59,11 @@ Ajoutez la configuration suivante dans app/config/config.yml
                 per_page: 5
         sonata_admin:
             enabled: false # passez cette option à true si vous utilisez SonataAdminBundle
+```
 
 Ajoutez un ROLE_MODERATOR dans app/config/security.yml
 
+```yaml
     # app/config/security.yml
 
     security:
@@ -67,9 +71,11 @@ Ajoutez un ROLE_MODERATOR dans app/config/security.yml
             ROLE_ADMIN:       [ROLE_MODERATOR]
             ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
             ROLE_MODERATOR:   [ROLE_USER]
+```
 
 Configuration
 
+```yaml
     # app/config/config.yml
 
     doctrine:
@@ -117,6 +123,7 @@ Configuration
                 per_page: 5
         sonata_admin:
             enabled: false
+```
 
 Mettez à jour la base de donnée
 
