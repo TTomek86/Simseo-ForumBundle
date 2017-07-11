@@ -10,7 +10,7 @@ Ce bundle a besoin d'utiliser knplabs/knp-paginator-bundle, stof/doctrine-extens
 
 Utilisez composer pour gérer les dépendances et télécharger SimseoForumBundle
 
-```shell
+```
     $php composer.phar require simseo/forum-bundle
 ```
 
@@ -127,6 +127,8 @@ Configuration
 
 Mettez à jour la base de donnée
 
+```
     $ php app/console doctrine:schema:update --force
+```
 
 Rendez vous ensuite à l'adresse /forum/admin et créez vos premiers forums. 
