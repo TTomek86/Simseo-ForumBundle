@@ -1,8 +1,10 @@
-#Simseo/ForumBundle
+Simseo/ForumBundle
+-----------------
 
 Ce bundle est actuellement en developpement. Pour ceux qui voudraient contribuer, merci de faire une pull request sur Github. 
 
-##Installation
+Installation
+------------
 
 Ce bundle a besoin d'utiliser knplabs/knp-paginator-bundle, stof/doctrine-extensions-bundle et egeloen/ckeditor-bundle. Je vous renvoie à leur propre documentation pour leur installation.
 
