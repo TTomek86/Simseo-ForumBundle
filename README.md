@@ -29,12 +29,14 @@ Enregistrez le bundle dans app/AppKernel.php
 
 Ajoutez les routes:
 
+```yaml
+
     # app/config/routing.yml
 
     simseo_forum:
     resource: "@SimseoForumBundle/Resources/config/routing.yml"
     prefix:   /forum
-
+```
 Ajoutez la configuration suivante dans app/config/config.yml
 
     # app/config/config.yml
