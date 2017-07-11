@@ -16,12 +16,12 @@
         "twig/twig": "*",
         "doctrine/doctrine-bundle": "*",
         "knplabs/knp-paginator-bundle": "*",
-        "stof/doctrine-extensions-bundle": "*"
+        "stof/doctrine-extensions-bundle": "*",
+        "egeloen/ckeditor-bundle": "*"
     },
     "suggest": {
         "sonata-project/doctrine-orm-admin-bundle": "Admin the forum from the SonataAdmin dasboard",
-        "sonata-project/media-bundle": "Image handler for users and Forums",
-        "egeloen/ckeditor-bundle": "Display a WYSIWYG editor for posts"
+        "sonata-project/media-bundle": "Image handler for users and Forums"
     },
     "autoload": {
         "psr-0": {"Simseo\\ForumBundle": ""},
