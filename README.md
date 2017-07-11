@@ -11,7 +11,7 @@ Ce bundle a besoin d'utiliser knplabs/knp-paginator-bundle, stof/doctrine-extens
 Utilisez composer pour gérer les dépendances et télécharger SimseoForumBundle
 
 ```
-    $php composer.phar require simseo/forum-bundle
+    $ php composer.phar require simseo/forum-bundle
 ```
 
 Enregistrez le bundle dans app/AppKernel.php
