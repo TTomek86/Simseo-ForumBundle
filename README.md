@@ -14,7 +14,7 @@ Utilisez composer pour gérer les dépendances et télécharger SimseoForumBundl
 
 
 Enregistrez le bundle dans app/AppKernel.php
-
+```php
     <?php
     // app/AppKernel.php
     public function registerBundles()
@@ -25,6 +25,7 @@ Enregistrez le bundle dans app/AppKernel.php
         );
         // ...
     }
+```
 
 Ajoutez les routes:
 
