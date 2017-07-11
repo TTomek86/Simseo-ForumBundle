@@ -1,3 +1,55 @@
-simseo_forum_homepage:
+simseo_forum_list:
     path:     /
-    defaults: { _controller: SimseoForumBundle:Default:index }
+    defaults: { _controller: SimseoForumBundle:Forum:list }
+    
+simseo_forum_admin:
+    path:     /admin
+    defaults: { _controller: SimseoForumBundle:Admin:index }
+    
+simseo_forum_show:
+    path:     /{slug}
+    defaults: { _controller: SimseoForumBundle:Forum:show }
+
+simseo_forum_topic_show:
+    path:     /topic/show/{slug}
+    defaults: { _controller: SimseoForumBundle:Topic:show }
+    
+simseo_forum_topic_create:
+    path:     /topic/create/{slug}
+    defaults: { _controller: SimseoForumBundle:Topic:add }
+    
+simseo_forum_topic_edit:
+    path:     /topic/edit/{slug}
+    defaults: { _controller: SimseoForumBundle:Topic:edit }
+    
+simseo_forum_post_edit:
+    path:     /post/edit/{id}
+    defaults: { _controller: SimseoForumBundle:Post:edit }
+    
+simseo_forum_post_remove:
+    path:     /post/remove/{id}
+    defaults: { _controller: SimseoForumBundle:Post:remove }    
+
+simseo_forum_forum_create:
+    path:     /admin/forum/add/{id}
+    defaults: { _controller: SimseoForumBundle:Forum:add }
+   
+simseo_forum_forum_edit:
+    path:     /admin/forum/edit/{id}
+    defaults: { _controller: SimseoForumBundle:Forum:edit }
+    
+simseo_forum_forum_edit:
+    path:     /admin/forum/remove/{id}
+    defaults: { _controller: SimseoForumBundle:Forum:remove }
+    
+simseo_forum_category_create:
+    path:     /admin/category/add
+    defaults: { _controller: SimseoForumBundle:Category:add }
+    
+simseo_forum_category_edit:
+    path:     /admin/category/edit/{id}
+    defaults: { _controller: SimseoForumBundle:Category:edit }
+    
+simseo_forum_category_remove:
+    path:     /admin/category/remove/{id}
+    defaults: { _controller: SimseoForumBundle:Category:remove }

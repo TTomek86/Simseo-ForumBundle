@@ -1,0 +1,18 @@
+{% extends "SimseoForumBundle::layout.html.twig" %}
+{% block forum_body %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <a href="#form">
+            <button type="button" class="btn pull-right">Répondre</button>
+        </a>
+    {% endif %}
+    <h3>{{ topic.title }}</h3>
+    {{ knp_pagination_render(pagination) }}
+    {% for post in pagination %}
+        {% include 'SimseoForumBundle:Post:single-post.html.twig' %}
+    {% endfor %}
+    {{ knp_pagination_render(pagination) }}
+    <div id="form">
+        {{ form(form) }}
+    </div>
+{% endblock %}
+

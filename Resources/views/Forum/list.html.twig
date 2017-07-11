@@ -1,0 +1,22 @@
+{% extends "SimseoForumBundle::layout.html.twig" %}
+{% block forum_body %}
+    {% for category in categories %}
+        <h3>{{ category.title }}</h3>
+        {% for forum in category.forums %}
+            <div class="col-md-4">
+                <div class="panel panel-default">   
+                    <div class="panel-heading"><a href="{{ path('simseo_forum_show', { 'slug' : forum.slug }) }}">{{ forum.title }}</a></div>
+                    <div class="panel-body">{{ forum.description }}</div>             
+                    <div class="panel-footer">
+                        {% if forum.topics is not empty %}
+                            <a href="{{ path('simseo_forum_topic_show', { 'slug' : forum.topics.first.slug }) }}">{{ forum.topics.first.title }}</a>
+                        {% else %}
+                            il n'y a pas encore de topic, créez du contenu
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="clearfix"></div>
+    {% endfor %}
+{% endblock %}

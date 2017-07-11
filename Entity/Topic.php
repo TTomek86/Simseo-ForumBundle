@@ -65,23 +65,29 @@ class Topic
     /**
      * @var bool
      *
-     * @ORM\Column(name="locked", type="boolean", options={"default"=false})
+     * @ORM\Column(name="locked", type="boolean")
      */
-    private $locked;
+    private $locked = false;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="resolved", type="boolean", options={"default"=false})
+     * @ORM\Column(name="resolved", type="boolean")
      */
-    private $resolved;
+    private $resolved = false;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="pinned", type="boolean", options={"default"=false})
+     * @ORM\Column(name="pinned", type="boolean")
      */
-    private $pinned;
+    private $pinned = false;
+    
+    /**
+     *
+     * @ORM\Column(name="last_post", type="datetime")
+     */
+    private $lastPost;
 
 
     public function __construct() {
@@ -175,37 +181,37 @@ class Topic
     }
     
     /**
-     * Add forum 
+     * Add post 
      * 
-     * @param \Simseo\ForumBundle\Entity\Forum $forum
+     * @param \Simseo\ForumBundle\Entity\Post $post
      * @return Topic
      */
-    public function addForum(\Simseo\ForumBundle\Entity\Forum $forum)
+    public function addPost(\Simseo\ForumBundle\Entity\Post $post)
     {
-        $this->forums[] = $forum;
+        $this->posts[] = $post;
         return $this;
     }
     
     /**
-     * Remove forum 
+     * Remove post 
      * 
-     * @param \Simseo\ForumBundle\Entity\Forum $forum
+     * @param \Simseo\ForumBundle\Entity\Post $post
      * @return Topic
      */
-    public function removeForum(\Simseo\ForumBundle\Entity\Forum $forum)
+    public function removePost(\Simseo\ForumBundle\Entity\Post $post)
     {
-        $this->forums->removeElement($forum);
+        $this->posts->removeElement($post);
         return $this;
     }
     
     /**
-     * Get forums
+     * Get posts
      * 
      * @return ArrayCollection
      */
-    public function getForums()
+    public function getPosts()
     {
-        return $this->forums;
+        return $this->posts;
     }
   
     /**
@@ -278,6 +284,28 @@ class Topic
     public function isPinned()
     {
         return $this->pinned;
+    }
+    
+    /**
+     * Set lastPost
+     * 
+     * @param \Datetime $lastpost
+     * @return Topic
+     */
+    public function setLastPost($lastpost)
+    {
+        $this->lastPost = $lastpost;
+        return $this;
+    }
+    
+    /**
+     * Get lastPost
+     * 
+     * @return \Datetime
+     */
+    public function getLastPost()
+    {
+        return $this->lastPost;
     }
 }
 

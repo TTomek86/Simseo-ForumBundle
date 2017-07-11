@@ -1,0 +1,47 @@
+{% extends "SimseoForumBundle::admin-layout.html.twig" %}
+{% block forum_body %}
+    <h3>administrer les catégories et les forums</h3>
+    <button type="button" class="btn btn-sm btn-primary">ajouter une categorie</button>
+    {% for category in categories %}
+        <h4>{{ category.title }}</h4>
+        <button type="button" class="btn btn-sm btn-success">ajouter un forum</button> 
+        <button type="button" class="btn btn-sm btn-warning">editer</button> 
+        <button type="button" class="btn btn-sm btn-danger">supprimer</button>
+        <table class="table">
+            <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for forum in category.forums %}
+                <tr>
+                    <th scope="row">
+                        {{ forum.position }}
+                    </th>
+                    <td>
+                        {{ forum.title }}
+                    </td>
+                    <td>
+                        {{ forum.description }}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit small"></i></button> 
+                        <button type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove small"></i></button>
+                        {% if loop.first == false %}
+                            <button type="button" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-arrow-up small"></i></button>
+                        {% endif %}
+                        {% if loop.last == false %}
+                            <button type="button" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-arrow-down small"></i></button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>    
+    {% endfor %}
+{% endblock %}
+

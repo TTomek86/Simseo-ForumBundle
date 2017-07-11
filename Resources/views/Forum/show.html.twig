@@ -1,0 +1,19 @@
+{% extends "SimseoForumBundle::layout.html.twig" %}
+{% block forum_body %}
+    {{ knp_pagination_render(pagination) }}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <a href="{{ path('simseo_forum_topic_create', { 'slug' : forum.slug }) }}">
+            <button type="button" class="btn pull-right">Créer un topic</button>
+        </a>
+    {% endif %}
+    <div class="clearfix"></div>
+    {% for topic in pagination %}
+        {% include 'SimseoForumBundle:Topic:single-topic.html.twig' %}
+    {% else %}
+        <div class="alert alert-warning">
+            il n'y a pas encore de topic dans ce forum
+        </div>
+    {% endfor %}
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}
+

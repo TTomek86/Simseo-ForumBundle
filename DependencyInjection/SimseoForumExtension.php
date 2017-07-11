@@ -22,6 +22,13 @@ class SimseoForumExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('simseo_forum.pagination', $config['pagination']);
+        $container->setParameter('simseo_forum.pagination.pagename', $config['pagination']["page_name"]);
+        $container->setParameter('simseo_forum.preview', $config["preview"]["enabled"]);
+        $container->setParameter('simseo_forum.antiflood', $config["antiflood"]["enabled"]);
+        $container->setParameter('simseo_forum.antiflood.hours', $config["antiflood"]["hours"]);
+        $container->setParameter('simseo_forum.sonata_admin', $config["sonata_admin"]["enabled"]);
+        
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

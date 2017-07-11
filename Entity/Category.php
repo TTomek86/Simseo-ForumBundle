@@ -31,11 +31,16 @@ class Category
     private $title;
     
     /**
+     * @var array
+     * 
      * @ORM\OneToMany(targetEntity="Simseo\ForumBundle\Entity\Forum", mappedBy="category", cascade={"remove"})
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $forums;
     
     /**
+     * @var int
+     * 
      * @Gedmo\SortablePosition
      * @ORM\Column(name="position", type="integer")
      */

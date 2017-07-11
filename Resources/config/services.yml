@@ -16,3 +16,11 @@ services:
             - 'PixSortableBehaviorBundle:SortableAdmin'
         tags:
             - { name: sonata.admin, manager_type: orm, group: Forum, label: Forum }
+            
+    simseo.forum.pagin:
+            class: Simseo\ForumBundle\Component\Pagin
+            arguments:
+                - '@request_stack'
+                - '@knp_paginator'
+                - '%simseo_forum.pagination%'
+                - '%simseo_forum.pagination.pagename%'

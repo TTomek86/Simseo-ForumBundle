@@ -10,6 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table(name="simseo_forum_post")
  * @ORM\Entity(repositoryClass="Simseo\ForumBundle\Repository\PostRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Post
 {
@@ -32,7 +33,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Simseo\ForumBundle\Entity\Topic", inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity="Simseo\ForumBundle\Entity\Topic", inversedBy="posts", cascade={"persist"})
      */
     private $topic;
 
@@ -44,7 +45,7 @@ class Post
 
     /**
      * @var \DateTime
-     * @Gedmo\Timestampable(on="update")
+     * @Gedmo\Timestampable(on="change", field={"content"})
      * @ORM\Column(name="updatedAt", type="datetimetz", nullable=true)
      */
     private $updatedAt;
@@ -172,6 +173,14 @@ class Post
     public function getContent()
     {
         return $this->content;
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        $this->topic->setLastPost(new \Datetime());
     }
 }
 
